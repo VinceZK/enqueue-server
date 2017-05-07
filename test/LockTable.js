@@ -204,7 +204,7 @@ describe('Lock Table Unit Tests', function(){
 
         it('should fail with different owner', function(){
             lock.uuid = '18';
-            lock.owner = 'O_2'
+            lock.owner = 'O_2';
             LockTable.addLock(lock, function(success,owner){
                 success.should.eql(false);
                 owner.should.be.eql('O_1');
@@ -213,7 +213,7 @@ describe('Lock Table Unit Tests', function(){
 
         it('should wait 1s, and fail', function(done){
             lock.uuid = '19';
-            lock.mode = 'O_2';
+            lock.owner = 'O_2';
             lock.waitTime = 1000;
             LockTable.addLock(lock, function(success,owner){
                 success.should.eql(false);
