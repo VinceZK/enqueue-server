@@ -29,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/VinceZK/enqueue-server/issues"
   },
-  "homepage": "https://github.com/VinceZK/enqueue-server#readme"
+  "homepage": "https://github.com/VinceZK/enqueue-server#readme",
+  "dependencies": {
+    "enqueue-client": "~0.0.2"
+  }
 }
