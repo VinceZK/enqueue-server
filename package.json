@@ -1,6 +1,6 @@
 {
   "name": "enqueue-server",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Node Enqueue Server",
   "main": "index.js",
   "devDependencies": {

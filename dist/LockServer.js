@@ -56,7 +56,11 @@ function _processLockTable(req, socket) {
             }
             break;
         case '4':
-            socket.write(JSON.stringify({ locks: lockTable.getLocksBy(req.lockName, req.lockOwner) }));
+            var locks = Buffer.from(JSON.stringify(lockTable.getLocksBy(req.lockName, req.lockOwner)));
+            var res = Buffer.alloc(4 + locks.length);
+            res.writeUInt32LE(locks.length, 0);
+            locks.copy(res, 4);
+            socket.write(res);
             break;
         default:
     }

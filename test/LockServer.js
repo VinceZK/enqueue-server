@@ -5,7 +5,7 @@
  */
 
 var lockClient = require('enqueue-client');
-//var lockClient = require('../dist/LockClient.js');
+
 describe('Lock Server Test', function(){
     this.timeout(10000);
     describe('Basic Tests', function(){
@@ -192,10 +192,10 @@ describe('Lock Server Test', function(){
         });
     });
 
-    describe('Performance Test', function(){
+    describe.only('Performance Test', function(){
         this.timeout(10000);
         var lock = {"name":"tab1","argument":["A","@"],"mode":"X","owner":"O_1","waitTime":0,"timeout":0};
-        var totalReq = 2000;
+        var totalReq = 1000;
         it('should add 1000 X locks', function(done){
             var t0 = Date.now();
             var count = 0;
