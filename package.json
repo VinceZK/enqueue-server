@@ -1,6 +1,6 @@
 {
   "name": "enqueue-server",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Node Enqueue Server",
   "main": "index.js",
   "devDependencies": {
@@ -8,6 +8,7 @@
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.22.0",
     "babel-register": "^6.22.0",
+    "enqueue-client": "~0.0.16",
     "mocha": "^3.2.0",
     "should": "^11.2.0"
   },
@@ -29,8 +30,5 @@
   "bugs": {
     "url": "https://github.com/VinceZK/enqueue-server/issues"
   },
-  "homepage": "https://github.com/VinceZK/enqueue-server#readme",
-  "dependencies": {
-    "enqueue-client": "~0.0.2"
-  }
+  "homepage": "https://github.com/VinceZK/enqueue-server#readme"
 }
