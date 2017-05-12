@@ -67,8 +67,9 @@ It is recommended to use enqueue server in this way, as it is much safer and can
     
     ```javascript
     var lockClient = require('enqueue-client');
-    var lock = {"name":"product","argument":["Computer"],"mode":"E","owner":"B"};
+    lockClient.setEnqueueServerConnection('127.0.0.1', 3721);
     
+    var lock = {"name":"product","argument":["Computer"],"mode":"E","owner":"B"};
     lockClient.lock(lock, function(lockUUID,RC,OWNER){
        console.log('Lock is acquired with lock UUID: '+lockUUID);
     });
@@ -94,6 +95,25 @@ Each further lock request will be rejected.
 
 ### Optimistic Lock (O)
 Optimistic locks initially behave like shared locks and can be converted into exclusive locks.
+
+## Elementary Lock
+An elementary lock contains following attributes:
+
+**name**: lock object name, usually you can use the database table name.
+
+**argument**: the key of the object, it is an array, 
+as the object key may be combined with several fields. 
+For example, an object has the key combined with 3 fields.
+The argument ['A', 'B', '@'] stands for the object with first 2 key fields equals 'A' and 'B',
+the wildcard letter represented here by '@'.
+
+**mode**: 4 lock types: S, E, X, O.
+
+**owner**: the owner who holds the lock, it can be a login user ID.
+
+**waitTime**: time to wait until the lock is acquired, default is 0.
+
+**timeout**: time to hold the lock, default is 15 minutes.
 
 ## Tests
 You can find all the unit tests in the _test_ folder, and run them by:
