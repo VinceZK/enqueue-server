@@ -8,7 +8,6 @@ Object.defineProperty(exports, "__esModule", {
  */
 var net = require('net');
 var lockTable = require('./LockTable.js');
-var requestRegister = {};
 
 var lockServer = net.createServer(function (socket) {
     socket.on('error', function (error) {

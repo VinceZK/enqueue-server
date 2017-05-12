@@ -54,7 +54,7 @@ It is recommended to use enqueue server in this way, as it is much safer and can
  
 2. Start the enqueue server:
 
-CD to the install path of EnqueueServer
+   CD to the install path of EnqueueServer
 
    ```bash
    $ node index.js 
@@ -62,17 +62,17 @@ CD to the install path of EnqueueServer
 
 3. Test to connect:   
 
-Download the [enqueue-client](https://www.npmjs.com/package/enqueue-client), 
-and execute following javascript in either browser or NodeJS.
-
-```javascript
-var lockClient = require('enqueue-client');
-var lock = {"name":"product","argument":["Computer"],"mode":"E","owner":"B"};
-
-lockClient.lock(lock, function(lockUUID,RC,OWNER){
-   console.log('Lock is acquired with lock UUID: '+lockUUID);
-});
-```
+    Download the [enqueue-client](https://www.npmjs.com/package/enqueue-client), 
+    and execute following javascript in either browser or NodeJS.
+    
+    ```javascript
+    var lockClient = require('enqueue-client');
+    var lock = {"name":"product","argument":["Computer"],"mode":"E","owner":"B"};
+    
+    lockClient.lock(lock, function(lockUUID,RC,OWNER){
+       console.log('Lock is acquired with lock UUID: '+lockUUID);
+    });
+    ```
 ## Lock Types
 4 lock types are supported.
 

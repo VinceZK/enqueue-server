@@ -44,7 +44,6 @@ function addLock(lock, callback) {
 
         callback(true);
 
-        if (thisLock.timeout === 0) thisLock.timeout = 900000; //15 min by default
         thisLock.timeoutTimer = setTimeout(function () {
             lockQueue.remove(thisLock.uuid);
         }, thisLock.timeout);
@@ -57,11 +56,20 @@ function addLock(lock, callback) {
     lockQueue.push(thisLock);
 }
 
+/**
+ * Remove a lock
+ * @param lockUUID
+ */
 function removeLock(lockUUID) {
     if (!LockIndex[lockUUID]) throw Error("The lock does not exist!");
     LockIndex[lockUUID].lockQueue.remove(lockUUID);
 }
 
+/**
+ * Promote an optimistic lock to exclusive lock
+ * @param lockUUID
+ * @returns {boolean} successful or not
+ */
 function promoteOptimisticLock(lockUUID) {
     if (!LockIndex[lockUUID]) return false;
 
@@ -82,6 +90,12 @@ function promoteOptimisticLock(lockUUID) {
     }
 }
 
+/**
+ * Get a lock list by name and owner
+ * @param name
+ * @param owner
+ * @returns lock list in array
+ */
 function getLocksBy(name, owner) {
     var eleLocks = Object.values(LockIndex).filter(function (item) {
         if (name && owner) {
@@ -145,7 +159,7 @@ function _checkArgumentCollision(argument1, argument2) {
 }
 
 /**
- *
+ * Lock queue: locks with the same name and conflict arguments are queued
  * @param name
  * @param argument
  * @constructor
@@ -286,8 +300,8 @@ function ElementaryLock(eleLock) {
     this.argument = eleLock.argument;
     this.mode = eleLock.mode;
     this.owner = eleLock.owner;
-    this.waitTime = eleLock.waitTime;
-    this.timeout = eleLock.timeout;
+    this.waitTime = eleLock.waitTime ? eleLock.waitTime : 0;
+    this.timeout = eleLock.timeout ? eleLock.timeout : 900000; //15 min by default
     this.waitTimer = undefined;
     this.lockOn = undefined;
     this.lockFail = undefined;
