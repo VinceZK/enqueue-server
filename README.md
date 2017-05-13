@@ -28,24 +28,13 @@ lockClient.lock(lock, function(lockUUID,RC,OWNER){
 ```
 
 ## Architecture and Deployment
-Enqueue server can be deployed in 2 ways: 1) Accessed by browser APP; 2) Accessed by a server process. 
+Enqueue server is started in one single Node process. 
+It can be either deployed in the same server with your application, or be deployed in a standalone server.
+In both cases, it be shared among multiple application server processes. 
 
-### Accessed by a Browser APP
+![Enqueue Server is behind application server process](ServerAccess.png)
 
-![Browser Access](BrowserAccess.png)
 
-By embedding the [enqueue-client](https://www.npmjs.com/package/enqueue-client), 
-you can request locks directly from a browser app. 
-Although a user can use browser javascript debugger to jump over the control, 
-but it somehow provides simplification on implementing the enqueue logic. 
-You can use enqueue server in this way for running tests. 
-
-### Accessed by a Server Process
-
-![Server Access](ServerAccess.png)
-
-It is recommended to use enqueue server in this way, as it is much safer and can also benefits performance and throughput.
- 
 ## To Begin
 1. Install it:
 
