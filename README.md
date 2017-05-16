@@ -30,7 +30,7 @@ lockClient.lock(lock, function(lockUUID,RC,OWNER){
 ## Architecture and Deployment
 Enqueue server is started in one single Node process. 
 It can be either deployed in the same server with your application, or be deployed in a standalone server.
-In both cases, it be shared among multiple application server processes. 
+In both cases, it can be shared among multiple application server processes. 
 
 ![Enqueue Server is behind application server process](ServerAccess.png)
 
@@ -53,7 +53,7 @@ In both cases, it be shared among multiple application server processes.
 3. Test to connect:   
 
     Download the [enqueue-client](https://www.npmjs.com/package/enqueue-client), 
-    and execute following javascript in either browser or NodeJS.
+    and execute following javascript in NodeJS.
     
     ```javascript    
     var lockClient = require('enqueue-client');
